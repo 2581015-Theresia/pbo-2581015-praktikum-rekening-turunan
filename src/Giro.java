@@ -7,5 +7,16 @@ public class Giro extends Rekening {
     }
     @Override
     public boolean tarik(int jumlah) {
-    if (jumlah <= 0 ||)}
+    if (jumlah <= 0 || saldo - jumlah < -batasOverdraft){
+        return false;
+    }
+    saldo -= jumlah;
+    return true;
+    }
+
+    @Override
+    public void cetakInfo() {
+        super.cetakInfo();
+        System.out.println( " Giro, batas overdraft " + formatRupiah(batasOverdraft));
+    }
 }
